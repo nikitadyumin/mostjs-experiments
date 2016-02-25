@@ -13,8 +13,6 @@ const cities = [
     ['Chelyabinsk', 'ru']
 ];
 
-const log = x => (console.log(x), x);
-
 const $first = document.querySelector('#first');
 const $second = document.querySelector('#second');
 
