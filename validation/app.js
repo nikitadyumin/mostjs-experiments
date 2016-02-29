@@ -12,12 +12,12 @@ const isNumber = n => !isNaN(+n);
 
 const all = (...predicates) => value => predicates.every(f => f(value));
 
-const name$ = most.fromEvent('keyup', $name)
+const fromInput = el => most.fromEvent('keyup', el)
     .map(e => e.target.value);
-const min$ = most.fromEvent('keyup', $min)
-    .map(e => e.target.value).map(Number);
-const max$ = most.fromEvent('keyup', $max)
-    .map(e => e.target.value).map(Number);
+
+const name$ = fromInput($name);
+const min$ = fromInput($min).map(Number);
+const max$ = fromInput($max).map(Number);
 
 const isNameValid$ = name$.map(notEmptyString);
 const isMinValid$ = min$.map(all(isNumber, gteThan(0)));
